@@ -2,15 +2,17 @@ const images = document.querySelector('.images')
 const numImg = images.childElementCount
 const buttons = document.querySelector('.button-dot')
 const button = document.querySelector('.button')
+const img = document.querySelectorAll('img')
 
-function createBtn() {
+img.forEach((image, index) => {
+    image.className = `btn${index + 1}`
+    createBtn(index)
+})
+
+function createBtn(btnId) {
     const btn = document.createElement('div')
-    btn.className = 'button'
+    btn.className = `button btn${btnId+1}`
     buttons.insertBefore(btn, button)
-}
-
-for (let i = 0; i < numImg; i++) {
-    createBtn()
 }
 
 const allButtons = document.querySelectorAll('.button')
@@ -19,5 +21,13 @@ allButtons.forEach(btn => {
 })
 
 function showImg(e) {
-    console.log(e.target)
+    img.forEach(image => {
+        if (e.target.classList.contains(image.className)) {
+            image.style.gridColumn = 1;
+        }
+        if (!e.target.classList.contains(image.className)) {
+            image.style.gridColumn = 2;
+            image.style.gridRow = 1;
+        }
+    })
 }
