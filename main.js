@@ -33,8 +33,7 @@ function showImg(e) {
     img.forEach(image => {
         if (e.target.classList.contains(image.className)) {
             image.style.gridColumn = 1;
-        }
-        if (!e.target.classList.contains(image.className)) {
+        } else {
             image.style.gridColumn = 2;
             image.style.gridRow = 1;
         }
