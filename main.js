@@ -3,8 +3,6 @@ const numImg = images.childElementCount
 const buttons = document.querySelector('.button-dot')
 const button = document.querySelector('.button')
 
-let token = 0
-
 function createBtn() {
     const btn = document.createElement('div')
     btn.className = 'button'
@@ -16,3 +14,10 @@ for (let i = 0; i < numImg; i++) {
 }
 
 const allButtons = document.querySelectorAll('.button')
+allButtons.forEach(btn => {
+    btn.addEventListener('click', showImg)
+})
+
+function showImg(e) {
+    console.log(e.target)
+}
